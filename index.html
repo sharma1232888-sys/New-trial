@@ -30,54 +30,51 @@ overflow-x:hidden;
 100%{background-position:0% 50%;}
 }
 
-/* HERO */
-.hero{
-height:100vh;
+/* LOCK SCREEN */
+#lockScreen{
+position:fixed;
+top:0;left:0;
+width:100%;height:100%;
 display:flex;
 justify-content:center;
 align-items:center;
-text-align:center;
-padding:20px;
+flex-direction:column;
+background:rgba(0,0,0,0.5);
+z-index:9999;
 }
 
-.card{
-background:rgba(255,255,255,0.12);
-padding:35px;
-border-radius:25px;
-backdrop-filter:blur(15px);
-max-width:700px;
+input{
+padding:10px;
+border:none;
+border-radius:10px;
+margin:10px;
 }
 
-h1{font-size:40px;margin-bottom:10px;}
-p{opacity:0.9;line-height:1.6}
-
-/* BUTTON */
 .btn{
-margin:6px;
 padding:12px 18px;
 border:none;
 border-radius:30px;
 background:#ff4d6d;
 color:white;
 cursor:pointer;
+margin:5px;
 }
 
-/* SECTIONS */
-.section{
-padding:70px 20px;
+/* MAIN APP */
+#mainApp{
+display:none;
 text-align:center;
+padding:20px;
 }
 
-.grid{
-display:grid;
-grid-template-columns:repeat(auto-fit,minmax(220px,1fr));
-gap:15px;
-margin-top:20px;
+.section{
+padding:60px 20px;
 }
 
 .box{
 background:rgba(255,255,255,0.12);
-padding:18px;
+padding:15px;
+margin:10px;
 border-radius:15px;
 cursor:pointer;
 transition:0.3s;
@@ -107,103 +104,81 @@ max-width:380px;
 text-align:center;
 }
 
-/* HEARTS */
-.heart{
-position:fixed;
-bottom:-20px;
-color:pink;
-animation:float 6s linear infinite;
-}
-
-@keyframes float{
-to{
-transform:translateY(-110vh);
-opacity:0;
-}
-}
-
-img{
-width:100%;
-height:200px;
-object-fit:cover;
-border-radius:15px;
-}
-
-input{
-padding:10px;
-border:none;
-border-radius:10px;
-margin-top:10px;
-}
-
 </style>
 </head>
 
 <body>
 
-<!-- HERO -->
-<section class="hero">
-<div class="card">
-<h1>Hey Abhi ❤️</h1>
-<p>Your complete love world is ready 💙</p>
-
-<button class="btn" onclick="showMessage('Welcome to your love world ❤️')">Open Surprise</button>
-<button class="btn" onclick="toggleSong()">🎵 Play Song</button>
+<!-- 🔐 LOCK SCREEN -->
+<div id="lockScreen">
+<h1>🔐 Enter Password</h1>
+<input id="pass" placeholder="Enter password">
+<button class="btn" onclick="checkPassword()">Unlock</button>
 </div>
-</section>
+
+<!-- 💙 MAIN APP -->
+<div id="mainApp">
+
+<h1>Hey Abhi ❤️</h1>
+<p>Your love world is ready 💙</p>
+
+<!-- SONGS -->
+<button class="btn" onclick="playSong(1)">🎵 Song 1</button>
+<button class="btn" onclick="playSong(2)">🎵 Song 2</button>
+<button class="btn" onclick="playSong(3)">🎵 Song 3</button>
 
 <!-- TIMELINE -->
-<section class="section">
-<h2>🕰️ Our Journey Timeline</h2>
-<div class="grid">
+<div class="section">
+<h2>🕰️ Timeline</h2>
+
 <div class="box">💌 First Message (14 July 2024 • 6:39 PM)</div>
 <div class="box">📞 First Call (14 Aug 2025 • 12:46 PM)</div>
 <div class="box">💞 Relationship Start (12 Aug 2025)</div>
 <div class="box">❤️ First Meet (2 April 2025 • 5:30 PM)</div>
 </div>
-</section>
 
 <!-- OPEN WHEN -->
-<section class="section">
+<div class="section">
 <h2>💌 Open When</h2>
-<div class="grid">
+
 <div class="box" onclick="showSad()">Sad</div>
 <div class="box" onclick="showStressed()">Stressed</div>
 <div class="box" onclick="showDemotivated()">Demotivated</div>
 <div class="box" onclick="showMissing()">Missing Me</div>
 </div>
-</section>
 
 <!-- EMERGENCY -->
-<section class="section">
+<div class="section">
 <h2>🔥 Emergency Motivation</h2>
 <div class="box" onclick="showEmergency()">Tap Here</div>
-</section>
+</div>
 
 <!-- PROUD -->
-<section class="section">
+<div class="section">
 <h2>🏆 What I'm Proud Of</h2>
 <div class="box" onclick="showProud()">Read</div>
-</section>
+</div>
+
+<!-- THINGS YOU DON’T KNOW -->
+<div class="section">
+<h2>💭 Things You Don’t Know</h2>
+<div class="box" onclick="showUnknown()">Read This</div>
+</div>
 
 <!-- LOVE LETTER -->
-<section class="section">
+<div class="section">
 <h2>✉️ Final Love Letter</h2>
 <div class="box" onclick="showLove()">Open</div>
-</section>
+</div>
 
 <!-- SECRET -->
-<section class="section">
-<h2>🔐 Secret Message</h2>
-<input id="pass" placeholder="Enter password">
-<button class="btn" onclick="check()">Unlock</button>
-</section>
+<div class="section">
+<h2>🔐 Secret</h2>
+<input id="secretInput" placeholder="Enter password">
+<button class="btn" onclick="checkSecret()">Unlock</button>
+</div>
 
-<!-- MEMORIES -->
-<section class="section">
-<h2>📸 Memories</h2>
-<div class="grid" id="gallery"></div>
-</section>
+</div>
 
 <!-- MODAL -->
 <div class="modal" id="modal">
@@ -213,30 +188,19 @@ margin-top:10px;
 </div>
 </div>
 
-<!-- AUDIO -->
-<audio id="song"></audio>
-
 <script>
 
-/* SONG */
-const SONG_URL = "PASTE_SONG_LINK_HERE";
-
-/* MEMORIES */
-const MEMORIES = [
-"https://source.unsplash.com/400x300/?love",
-"https://source.unsplash.com/401x300/?couple",
-"https://source.unsplash.com/402x300/?romantic",
-"https://source.unsplash.com/403x300/?memories"
-];
-
-/* GALLERY */
-let g=document.getElementById("gallery");
-
-MEMORIES.forEach(img=>{
-let i=document.createElement("img");
-i.src=img;
-g.appendChild(i);
-});
+/* PASSWORD */
+function checkPassword(){
+let p=document.getElementById("pass").value;
+if(p==="love"){
+document.getElementById("lockScreen").style.display="none";
+document.getElementById("mainApp").style.display="block";
+alert("🎂 Happy Birthday My Love ❤️");
+}else{
+alert("Wrong Password 😢");
+}
+}
 
 /* MODAL */
 function showMessage(text){
@@ -248,72 +212,24 @@ function closeM(){
 document.getElementById("modal").style.display="none";
 }
 
-/* SONG */
-let audio=document.getElementById("song");
-let playing=false;
+/* SONGS */
+let currentAudio=null;
 
-function toggleSong(){
-if(!audio.src){
-audio.src=SONG_URL;
+const songs={
+1:"PASTE_SONG_LINK_1",
+2:"PASTE_SONG_LINK_2",
+3:"PASTE_SONG_LINK_3"
+};
+
+function playSong(n){
+if(currentAudio){
+currentAudio.pause();
+}
+currentAudio=new Audio(songs[n]);
+currentAudio.play();
 }
 
-if(!playing){
-audio.play();
-playing=true;
-}else{
-audio.pause();
-playing=false;
-}
-}
-
-/* PASSWORD */
-function check(){
-let p=document.getElementById("pass").value;
-if(p==="love"){
-showMessage("❤️ Secret Unlocked");
-}else{
-showMessage("Wrong Password 😢");
-}
-}
-
-/* COUNTDOWN */
-function countdown(){
-let now=new Date();
-let year=now.getFullYear();
-
-let bday=new Date(year,5,30);
-
-if(now>bday){
-bday=new Date(year+1,5,30);
-}
-
-let diff=bday-now;
-
-let d=Math.floor(diff/86400000);
-let h=Math.floor(diff/3600000)%24;
-let m=Math.floor(diff/60000)%60;
-let s=Math.floor(diff/1000)%60;
-
-let el=document.getElementById("countdown");
-if(el){
-el.innerText=d+"d "+h+"h "+m+"m "+s+"s ❤️";
-}
-}
-
-setInterval(countdown,1000);
-countdown();
-
-/* HEARTS */
-setInterval(()=>{
-let h=document.createElement("div");
-h.className="heart";
-h.innerHTML="❤️";
-h.style.left=Math.random()*100+"vw";
-document.body.appendChild(h);
-setTimeout(()=>h.remove(),6000);
-},250);
-
-/* ================= ALL YOUR EXACT MESSAGES ================= */
+/* ALL MESSAGES (EXACT) */
 
 function showSad(){
 showMessage(`If you're reading this, I'm guessing today hasn't been easy. I just want you to remember that you don't have to carry everything alone. I'm always on your side, even on the days when nothing feels right. Better days are coming, and until then, I'm here for you. ❤️`);
@@ -346,10 +262,26 @@ function showProud(){
 showMessage(`I’m really proud of you. You handle life with strength, responsibility, and patience. ❤️`);
 }
 
+function showUnknown(){
+showMessage(`You probably don’t know how much I notice the little things about you—the way you carry yourself, the way you handle situations without noise, and the way you never give up.
+
+I admire you more than I say… and I see you more than you realize. ❤️`);
+}
+
 function showLove(){
 showMessage(`To My Favorite Person, ❤️
-I don't think I tell you this enough, but I truly admire the kind of person you are. You show up for everything and everyone. You are strong, kind, and amazing.
-Forever yours. ❤️`);
+I truly admire the kind of person you are. You show up, you care, and you never give up on life or people.
+You are my peace, my happiness, and my home. ❤️`);
+}
+
+/* SECRET */
+function checkSecret(){
+let p=document.getElementById("secretInput").value;
+if(p==="love"){
+showMessage("❤️ Secret Unlocked");
+}else{
+showMessage("Wrong password 😢");
+}
 }
 
 </script>
