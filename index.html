@@ -5,83 +5,69 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>My Love World ❤️</title>
 
-<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap" rel="stylesheet">
-
 <style>
 
-*{
-margin:0;
-padding:0;
-box-sizing:border-box;
-font-family:Poppins;
-}
-
 body{
+margin:0;
+font-family:Arial;
 background:linear-gradient(-45deg,#ff9a9e,#fad0c4,#a18cd1,#fbc2eb);
 background-size:400% 400%;
-animation:bg 10s ease infinite;
+animation:bg 10s infinite;
 color:white;
-overflow-x:hidden;
+text-align:center;
 }
 
 @keyframes bg{
-0%{background-position:0% 50%;}
-50%{background-position:100% 50%;}
-100%{background-position:0% 50%;}
+0%{background-position:0% 50%}
+50%{background-position:100% 50%}
+100%{background-position:0% 50%}
 }
 
 /* LOCK SCREEN */
-#lockScreen{
+#lock{
 position:fixed;
 top:0;left:0;
 width:100%;height:100%;
+background:rgba(0,0,0,0.7);
 display:flex;
 justify-content:center;
 align-items:center;
 flex-direction:column;
-background:rgba(0,0,0,0.5);
 z-index:9999;
 }
 
 input{
 padding:10px;
-border:none;
 border-radius:10px;
+border:none;
 margin:10px;
 }
 
-.btn{
-padding:12px 18px;
+button{
+padding:10px 20px;
 border:none;
-border-radius:30px;
+border-radius:20px;
 background:#ff4d6d;
 color:white;
 cursor:pointer;
-margin:5px;
 }
 
 /* MAIN APP */
-#mainApp{
+#app{
 display:none;
-text-align:center;
 padding:20px;
 }
 
 .section{
-padding:60px 20px;
+margin:30px 0;
 }
 
 .box{
-background:rgba(255,255,255,0.12);
+background:rgba(255,255,255,0.15);
 padding:15px;
 margin:10px;
 border-radius:15px;
 cursor:pointer;
-transition:0.3s;
-}
-
-.box:hover{
-transform:scale(1.05);
 }
 
 /* MODAL */
@@ -89,10 +75,10 @@ transform:scale(1.05);
 position:fixed;
 top:0;left:0;
 width:100%;height:100%;
+background:rgba(0,0,0,0.7);
 display:none;
 justify-content:center;
 align-items:center;
-background:rgba(0,0,0,0.7);
 }
 
 .modal-content{
@@ -100,8 +86,12 @@ background:white;
 color:black;
 padding:20px;
 border-radius:15px;
-max-width:380px;
-text-align:center;
+max-width:400px;
+}
+
+#countdown{
+font-size:20px;
+margin-top:10px;
 }
 
 </style>
@@ -109,73 +99,53 @@ text-align:center;
 
 <body>
 
-<!-- 🔐 LOCK SCREEN -->
-<div id="lockScreen">
-<h1>🔐 Enter Password</h1>
+<!-- 🔐 LOCK -->
+<div id="lock">
+<h2>🔐 Enter Password</h2>
 <input id="pass" placeholder="Enter password">
-<button class="btn" onclick="checkPassword()">Unlock</button>
+<button onclick="check()">Unlock</button>
 </div>
 
-<!-- 💙 MAIN APP -->
-<div id="mainApp">
+<!-- 💙 APP -->
+<div id="app">
 
 <h1>Hey Abhi ❤️</h1>
-<p>Your love world is ready 💙</p>
+<p>Your Love World is Ready 💙</p>
 
-<!-- SONGS -->
-<button class="btn" onclick="playSong(1)">🎵 Song 1</button>
-<button class="btn" onclick="playSong(2)">🎵 Song 2</button>
-<button class="btn" onclick="playSong(3)">🎵 Song 3</button>
+<button onclick="playSong(1)">🎵 Song 1</button>
+<button onclick="playSong(2)">🎵 Song 2</button>
+<button onclick="playSong(3)">🎵 Song 3</button>
+
+<div class="section">
+<h2>⏳ Birthday Countdown (30 June 12:00 AM)</h2>
+<div id="countdown"></div>
+</div>
 
 <!-- TIMELINE -->
 <div class="section">
 <h2>🕰️ Timeline</h2>
-
-<div class="box">💌 First Message (14 July 2024 • 6:39 PM)</div>
-<div class="box">📞 First Call (14 Aug 2025 • 12:46 PM)</div>
+<div class="box">💌 First Message (14 July 2024)</div>
+<div class="box">❤️ First Meet (2 April 2025)</div>
 <div class="box">💞 Relationship Start (12 Aug 2025)</div>
-<div class="box">❤️ First Meet (2 April 2025 • 5:30 PM)</div>
+<div class="box">📞 First Call (14 Aug 2025)</div>
 </div>
 
 <!-- OPEN WHEN -->
 <div class="section">
 <h2>💌 Open When</h2>
-
-<div class="box" onclick="showSad()">Sad</div>
-<div class="box" onclick="showStressed()">Stressed</div>
-<div class="box" onclick="showDemotivated()">Demotivated</div>
-<div class="box" onclick="showMissing()">Missing Me</div>
+<div class="box" onclick="sad()">Sad</div>
+<div class="box" onclick="stress()">Stressed</div>
+<div class="box" onclick="demo()">Demotivated</div>
+<div class="box" onclick="miss()">Missing Me</div>
 </div>
 
-<!-- EMERGENCY -->
+<!-- BUTTONS -->
 <div class="section">
-<h2>🔥 Emergency Motivation</h2>
-<div class="box" onclick="showEmergency()">Tap Here</div>
-</div>
-
-<!-- PROUD -->
-<div class="section">
-<h2>🏆 What I'm Proud Of</h2>
-<div class="box" onclick="showProud()">Read</div>
-</div>
-
-<!-- THINGS YOU DON’T KNOW -->
-<div class="section">
-<h2>💭 Things You Don’t Know</h2>
-<div class="box" onclick="showUnknown()">Read This</div>
-</div>
-
-<!-- LOVE LETTER -->
-<div class="section">
-<h2>✉️ Final Love Letter</h2>
-<div class="box" onclick="showLove()">Open</div>
-</div>
-
-<!-- SECRET -->
-<div class="section">
-<h2>🔐 Secret</h2>
-<input id="secretInput" placeholder="Enter password">
-<button class="btn" onclick="checkSecret()">Unlock</button>
+<div class="box" onclick="emergency()">🔥 Emergency Motivation</div>
+<div class="box" onclick="proud()">🏆 What I'm Proud Of</div>
+<div class="box" onclick="unknown()">💭 Things You Don’t Know</div>
+<div class="box" onclick="love()">✉️ Final Love Letter</div>
+<div class="box" onclick="secret()">🔐 Secret Message</div>
 </div>
 
 </div>
@@ -183,19 +153,24 @@ text-align:center;
 <!-- MODAL -->
 <div class="modal" id="modal">
 <div class="modal-content">
-<p id="msg"></p>
-<button class="btn" onclick="closeM()">Close</button>
+<p id="text"></p>
+<button onclick="closeM()">Close</button>
 </div>
 </div>
+
+<!-- AUDIO -->
+<audio id="audio"></audio>
 
 <script>
 
 /* PASSWORD */
-function checkPassword(){
+function check(){
 let p=document.getElementById("pass").value;
+
 if(p==="love"){
-document.getElementById("lockScreen").style.display="none";
-document.getElementById("mainApp").style.display="block";
+document.getElementById("lock").style.display="none";
+document.getElementById("app").style.display="block";
+birthday();
 alert("🎂 Happy Birthday My Love ❤️");
 }else{
 alert("Wrong Password 😢");
@@ -203,8 +178,8 @@ alert("Wrong Password 😢");
 }
 
 /* MODAL */
-function showMessage(text){
-document.getElementById("msg").innerText=text;
+function show(t){
+document.getElementById("text").innerText=t;
 document.getElementById("modal").style.display="flex";
 }
 
@@ -212,76 +187,83 @@ function closeM(){
 document.getElementById("modal").style.display="none";
 }
 
-/* SONGS */
-let currentAudio=null;
+/* COUNTDOWN */
+function birthday(){
+setInterval(()=>{
+let now=new Date();
+let year=now.getFullYear();
+let target=new Date(year,5,30,0,0,0);
 
-const songs={
-1:"PASTE_SONG_LINK_1",
-2:"PASTE_SONG_LINK_2",
-3:"PASTE_SONG_LINK_3"
-};
+if(now>target){
+target=new Date(year+1,5,30,0,0,0);
+}
+
+let diff=target-now;
+
+let d=Math.floor(diff/86400000);
+let h=Math.floor(diff/3600000)%24;
+let m=Math.floor(diff/60000)%60;
+let s=Math.floor(diff/1000)%60;
+
+document.getElementById("countdown").innerText=
+d+"d "+h+"h "+m+"m "+s+"s ❤️";
+
+},1000);
+}
+
+/* SONGS */
+let audio=document.getElementById("audio");
 
 function playSong(n){
-if(currentAudio){
-currentAudio.pause();
+if(n===1){
+audio.src="SONG_LINK_1";
 }
-currentAudio=new Audio(songs[n]);
-currentAudio.play();
+if(n===2){
+audio.src="SONG_LINK_2";
 }
-
-/* ALL MESSAGES (EXACT) */
-
-function showSad(){
-showMessage(`If you're reading this, I'm guessing today hasn't been easy. I just want you to remember that you don't have to carry everything alone. I'm always on your side, even on the days when nothing feels right. Better days are coming, and until then, I'm here for you. ❤️`);
+if(n===3){
+audio.src="SONG_LINK_3";
 }
-
-function showStressed(){
-showMessage(`Hey love,
-If you're reading this, life is probably feeling a little overwhelming right now. I wish I could be there to take some of your stress away and replace it with the biggest hug. Since I can't, let this letter remind you to take a deep breath. You don't have to figure everything out today. One step, one task, one moment at a time.
-You've made it through every difficult day before, and I know you'll get through this one too. No matter how heavy things feel, remember that you're never facing them alone. I'm always on your team, always cheering for you, and always so proud of you.
-Take a deep breath, my love. You've got this... and you've got me. ❤️`);
+audio.play();
 }
 
-function showDemotivated(){
-showMessage(`Hey love,
-If you're reading this, I'm guessing things aren't going the way you hoped, and that's okay. Not every day has to be productive, and not every setback means you're failing. Sometimes progress is quiet, slow, and hard to notice—but it's still progress.
-I hope you don't let one bad day make you doubt yourself. You're capable of so much more than you give yourself credit for. I've seen your strength, your hard work, and the way you keep going even when things get tough. That's something to be proud of.
-So don't give up because today feels difficult. Rest if you need to, take your time, and then try again. I'll always believe in you, even on the days when you don't believe in yourself.`);
+/* MESSAGES */
+
+function sad(){
+show(`If you're reading this, I'm guessing today hasn't been easy. I'm always on your side ❤️`);
 }
 
-function showMissing(){
-showMessage(`Hey love,
-If you're missing me right now, just remember this—distance can never change what you mean to me. Every day apart is simply one day closer to seeing you again. Until then, carry a little piece of my love with you. ❤️`);
+function stress(){
+show(`Take a deep breath… everything will be fine ❤️`);
 }
 
-function showEmergency(){
-showMessage(`If you're reading this because you're ready to give up... don't make that decision on a bad day. Rest if you need to, but come back tomorrow. I know you can do this, and I'll always be in your corner. ❤️`);
+function demo(){
+show(`You're stronger than you think ❤️`);
 }
 
-function showProud(){
-showMessage(`I’m really proud of you. You handle life with strength, responsibility, and patience. ❤️`);
+function miss(){
+show(`Distance can never change love ❤️`);
 }
 
-function showUnknown(){
-showMessage(`You probably don’t know how much I notice the little things about you—the way you carry yourself, the way you handle situations without noise, and the way you never give up.
-
-I admire you more than I say… and I see you more than you realize. ❤️`);
+function emergency(){
+show(`Don't give up today. Rest and try again ❤️`);
 }
 
-function showLove(){
-showMessage(`To My Favorite Person, ❤️
-I truly admire the kind of person you are. You show up, you care, and you never give up on life or people.
-You are my peace, my happiness, and my home. ❤️`);
+function proud(){
+show(`I'm proud of you for everything you do ❤️`);
 }
 
-/* SECRET */
-function checkSecret(){
-let p=document.getElementById("secretInput").value;
-if(p==="love"){
-showMessage("❤️ Secret Unlocked");
-}else{
-showMessage("Wrong password 😢");
+function unknown(){
+show(`I notice every little thing about you… more than you think ❤️`);
 }
+
+function love(){
+show(`To My Favorite Person ❤️
+You are my peace, my happiness, my everything. I truly admire you.`);
+}
+
+function secret(){
+show(`❤️ Secret Message Unlocked`);
 }
 
 </script>
