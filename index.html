@@ -3,69 +3,49 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>For My Special One ❤️</title>
+<title>For You ❤️</title>
 
 <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
 
 <style>
 
-/* =========================
-   GLOBAL DESIGN
-========================= */
+/* ================= GLOBAL ================= */
 
 *{
 margin:0;
 padding:0;
 box-sizing:border-box;
-font-family:'Poppins',sans-serif;
+font-family:Poppins;
 }
 
 body{
 background:linear-gradient(-45deg,#ff9a9e,#fad0c4,#a18cd1,#fbc2eb);
 background-size:400% 400%;
-animation:gradient 10s ease infinite;
+animation:bg 12s ease infinite;
 color:white;
 overflow-x:hidden;
 }
 
-@keyframes gradient{
+@keyframes bg{
 0%{background-position:0% 50%;}
 50%{background-position:100% 50%;}
 100%{background-position:0% 50%;}
 }
 
-/* =========================
-   NAVBAR
-========================= */
-
+/* NAV */
 nav{
 position:fixed;
 top:0;
 width:100%;
 display:flex;
 justify-content:space-between;
-align-items:center;
-padding:15px 30px;
+padding:15px 20px;
 background:rgba(255,255,255,0.1);
-backdrop-filter:blur(12px);
+backdrop-filter:blur(10px);
 z-index:1000;
 }
 
-nav h2{
-font-size:20px;
-}
-
-nav a{
-color:white;
-margin:0 10px;
-text-decoration:none;
-font-weight:500;
-}
-
-/* =========================
-   HERO SECTION
-========================= */
-
+/* HERO */
 .hero{
 height:100vh;
 display:flex;
@@ -77,27 +57,19 @@ padding:20px;
 
 .card{
 background:rgba(255,255,255,0.12);
-padding:40px;
+padding:35px;
 border-radius:25px;
 backdrop-filter:blur(15px);
-max-width:650px;
+max-width:700px;
 box-shadow:0 10px 30px rgba(0,0,0,0.2);
 }
 
-.card h1{
-font-size:42px;
-margin-bottom:10px;
-}
-
-.card p{
-font-size:18px;
-opacity:0.9;
-line-height:1.6;
-}
+h1{font-size:40px;margin-bottom:10px;}
+p{opacity:0.9;line-height:1.6}
 
 .btn{
-margin-top:20px;
-padding:12px 25px;
+margin:8px;
+padding:12px 18px;
 border:none;
 border-radius:30px;
 background:#ff4d6d;
@@ -110,10 +82,7 @@ transition:0.3s;
 transform:scale(1.05);
 }
 
-/* =========================
-   SECTIONS
-========================= */
-
+/* SECTIONS */
 .section{
 padding:80px 20px;
 text-align:center;
@@ -122,27 +91,23 @@ text-align:center;
 .grid{
 display:grid;
 grid-template-columns:repeat(auto-fit,minmax(220px,1fr));
-gap:20px;
-margin-top:30px;
+gap:15px;
+margin-top:20px;
 }
 
 .box{
 background:rgba(255,255,255,0.12);
 padding:20px;
-border-radius:20px;
-backdrop-filter:blur(10px);
-transition:0.3s;
+border-radius:15px;
 cursor:pointer;
+transition:0.3s;
 }
 
 .box:hover{
 transform:translateY(-8px);
 }
 
-/* =========================
-   MODAL
-========================= */
-
+/* MODAL */
 .modal{
 position:fixed;
 top:0;
@@ -160,14 +125,11 @@ background:white;
 color:black;
 padding:25px;
 border-radius:15px;
+max-width:320px;
 text-align:center;
-max-width:300px;
 }
 
-/* =========================
-   HEARTS
-========================= */
-
+/* HEARTS */
 .heart{
 position:fixed;
 bottom:-20px;
@@ -177,41 +139,40 @@ animation:float 6s linear infinite;
 }
 
 @keyframes float{
-to{
-transform:translateY(-110vh);
-opacity:0;
+to{transform:translateY(-110vh);opacity:0;}
 }
+
+input{
+padding:10px;
+border:none;
+border-radius:10px;
+margin-top:10px;
 }
 
 </style>
 </head>
+
 <body>
 
-<!-- NAV -->
 <nav>
-<h2>❤️ Love</h2>
-<div>
-<a href="#home">Home</a>
-<a href="#timeline">Timeline</a>
-<a href="#letters">Letters</a>
-</div>
+<div>❤️ Love World</div>
+<div>Timeline | Love | More</div>
 </nav>
 
 <!-- HERO -->
-<section class="hero" id="home">
+<section class="hero">
 <div class="card">
-<h1>Hey ❤️</h1>
-<p>This is not just a website… it's my feelings for you.</p>
+<h1>Hey Abhi ❤️</h1>
+<p>This website is not code… it's emotions written in pixels 💙</p>
 
 <button class="btn" onclick="start()">Open Surprise</button>
-<button class="btn" onclick="toggleMusic()">🎵 Music</button>
+<button class="btn" onclick="music()">🎵 Music</button>
 </div>
 </section>
 
 <!-- TIMELINE -->
-<section class="section" id="timeline">
-<h2>🕰️ Our Journey</h2>
-
+<section class="section">
+<h2>🕰️ Our Journey Timeline</h2>
 <div class="grid">
 <div class="box">💌 First Message</div>
 <div class="box">❤️ First Meet</div>
@@ -221,28 +182,64 @@ opacity:0;
 </section>
 
 <!-- OPEN WHEN -->
-<section class="section" id="letters">
+<section class="section">
 <h2>💌 Open When</h2>
-
 <div class="grid">
-<div class="box" onclick="openModal('Stay strong ❤️')">Sad</div>
-<div class="box" onclick="openModal('Everything will be fine ❤️')">Stressed</div>
-<div class="box" onclick="openModal('I miss you too ❤️')">Missing Me</div>
-<div class="box" onclick="openModal('You are amazing ❤️')">Demotivated</div>
+<div class="box" onclick="msg('Stay strong ❤️')">Sad</div>
+<div class="box" onclick="msg('Everything will be fine ❤️')">Stressed</div>
+<div class="box" onclick="msg('I miss you ❤️')">Missing Me</div>
+<div class="box" onclick="msg('You are amazing ❤️')">Demotivated</div>
 </div>
+</section>
+
+<!-- BUTTONS -->
+<section class="section">
+<h2>🤍 What You Need Right Now</h2>
+
+<button class="btn" onclick="msg('🤗 Hug sent ❤️')">Hug</button>
+<button class="btn" onclick="msg('😘 Kiss sent ❤️')">Kiss</button>
+<button class="btn" onclick="msg('💬 I am here ❤️')">Wanna Talk</button>
+<button class="btn" onclick="msg('💪 You are strong ❤️')">Motivation</button>
+<button class="btn" onclick="msg('💆 Relax ❤️')">Champi</button>
+<button class="btn" onclick="msg('📞 Calling you… (virtual) ❤️')">Video Call</button>
+<button class="btn" onclick="msg('🐥 Piku Mode ❤️')">Piku</button>
+</section>
+
+<!-- COUNTDOWN -->
+<section class="section">
+<h2>⏳ Birthday Countdown</h2>
+<h1 id="time">0</h1>
+</section>
+
+<!-- LOVE LETTER -->
+<section class="section">
+<h2>✉️ Final Love Letter</h2>
+<p style="max-width:700px;margin:auto;">
+You are my peace, my happiness, my everything ❤️
+I don’t need the world if I have you.
+Every heartbeat says your name.
+Forever yours 💙
+</p>
+</section>
+
+<!-- SECRET -->
+<section class="section">
+<h2>🔐 Secret Message</h2>
+<input id="pass" placeholder="Enter password">
+<button class="btn" onclick="check()">Unlock</button>
 </section>
 
 <!-- MODAL -->
 <div class="modal" id="modal">
 <div class="modal-content">
 <p id="msg"></p>
-<button onclick="closeModal()">Close</button>
+<button class="btn" onclick="closeM()">Close</button>
 </div>
 </div>
 
 <!-- MUSIC -->
-<audio id="music" loop>
-<source src="music.mp3" type="audio/mp3">
+<audio id="song">
+<source src="song.mp3" type="audio/mp3">
 </audio>
 
 <script>
@@ -255,30 +252,45 @@ h.innerHTML="❤️";
 h.style.left=Math.random()*100+"vw";
 document.body.appendChild(h);
 setTimeout(()=>h.remove(),6000);
-},300);
+},200);
 
 /* modal */
-function openModal(text){
+function msg(t){
 document.getElementById("modal").style.display="flex";
-document.getElementById("msg").innerText=text;
+document.getElementById("msg").innerText=t;
 }
 
-function closeModal(){
+function closeM(){
 document.getElementById("modal").style.display="none";
 }
 
 /* music */
-let playing=false;
-function toggleMusic(){
-let m=document.getElementById("music");
-if(!playing){m.play();playing=true;}
-else{m.pause();playing=false;}
+let p=false;
+function music(){
+let s=document.getElementById("song");
+if(!p){s.play();p=true;}
+else{s.pause();p=false;}
 }
 
 /* start */
 function start(){
-alert("Welcome to your world ❤️");
+msg("Welcome to your love world ❤️");
 }
+
+/* secret */
+function check(){
+if(document.getElementById("pass").value==="love"){
+msg("❤️ You unlocked my heart ❤️");
+}else{
+msg("Wrong password 😢");
+}
+}
+
+/* countdown */
+let i=0;
+setInterval(()=>{
+document.getElementById("time").innerText=i++;
+},1000);
 
 </script>
 
