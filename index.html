@@ -1,0 +1,485 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>For My Special One ❤️</title>
+
+<style>
+/* =======================
+   BASIC RESET
+======================= */
+*{
+margin:0;
+padding:0;
+box-sizing:border-box;
+font-family:'Poppins',sans-serif;
+}
+
+body{
+background:linear-gradient(135deg,#ff9a9e,#fad0c4,#a18cd1);
+background-size:400% 400%;
+animation:bg 10s infinite alternate;
+color:white;
+overflow-x:hidden;
+}
+
+@keyframes bg{
+0%{background-position:left;}
+100%{background-position:right;}
+}
+
+/* =======================
+   NAVBAR
+======================= */
+nav{
+position:fixed;
+top:0;
+left:0;
+width:100%;
+padding:15px 30px;
+display:flex;
+justify-content:space-between;
+align-items:center;
+background:rgba(255,255,255,0.1);
+backdrop-filter:blur(10px);
+z-index:1000;
+}
+
+nav .logo{
+font-size:22px;
+font-weight:bold;
+}
+
+nav ul{
+display:flex;
+gap:20px;
+list-style:none;
+}
+
+nav ul li a{
+color:white;
+text-decoration:none;
+font-weight:500;
+}
+
+/* =======================
+   HERO SECTION
+======================= */
+.hero{
+height:100vh;
+display:flex;
+justify-content:center;
+align-items:center;
+text-align:center;
+padding:20px;
+}
+
+.card{
+background:rgba(255,255,255,0.15);
+padding:30px;
+border-radius:20px;
+backdrop-filter:blur(15px);
+max-width:600px;
+}
+
+.card h1{
+font-size:40px;
+margin-bottom:15px;
+}
+
+.card p{
+font-size:18px;
+line-height:1.6;
+}
+
+.btn{
+margin-top:20px;
+padding:12px 25px;
+border:none;
+border-radius:30px;
+background:#ff4d6d;
+color:white;
+cursor:pointer;
+font-size:16px;
+transition:0.3s;
+}
+
+.btn:hover{
+transform:scale(1.1);
+}
+
+/* =======================
+   FLOATING HEARTS
+======================= */
+.heart{
+position:fixed;
+top:100%;
+color:pink;
+animation:float 6s linear infinite;
+}
+
+@keyframes float{
+0%{transform:translateY(0);}
+100%{transform:translateY(-110vh);}
+}
+
+</style>
+</head>
+
+<body>
+
+<!-- NAVBAR -->
+<nav>
+<div class="logo">❤️ Our Love</div>
+
+<ul>
+<li><a href="#home">Home</a></li>
+<li><a href="#timeline">Timeline</a></li>
+<li><a href="#letters">Letters</a></li>
+<li><a href="#gallery">Gallery</a></li>
+</ul>
+</nav>
+
+<!-- HERO -->
+<section class="hero" id="home">
+<div class="card">
+<h1>Hey Abhi ❤️</h1>
+<p>
+This website is just for you...
+Every moment, every memory, every feeling 💙
+</p>
+
+<button class="btn" onclick="startSurprise()">
+Open Your Surprise
+</button>
+</div>
+</section>
+
+<script>
+function startSurprise(){
+alert("Welcome to your surprise ❤️ Part 1 loaded!");
+}
+</script>
+
+</body>
+</html><!-- =======================
+     TIMELINE SECTION
+======================= -->
+
+<section id="timeline" style="padding:80px 20px;text-align:center;">
+
+<h2>🕰️ Our Journey Timeline</h2>
+
+<div style="display:flex;flex-wrap:wrap;justify-content:center;gap:20px;margin-top:30px;">
+
+<div style="background:rgba(255,255,255,0.15);padding:20px;border-radius:15px;width:250px;">
+<h3>💌 First Message</h3>
+<p>The moment everything started ❤️</p>
+</div>
+
+<div style="background:rgba(255,255,255,0.15);padding:20px;border-radius:15px;width:250px;">
+<h3>❤️ First Meet</h3>
+<p>When I saw you for the first time 😊</p>
+</div>
+
+<div style="background:rgba(255,255,255,0.15);padding:20px;border-radius:15px;width:250px;">
+<h3>💞 Relationship Start</h3>
+<p>The most beautiful decision of my life</p>
+</div>
+
+</div>
+</section>
+
+<!-- =======================
+     OPEN WHEN SECTION
+======================= -->
+
+<section id="letters" style="padding:80px 20px;text-align:center;">
+
+<h2>💌 Open When...</h2>
+
+<div style="display:flex;flex-wrap:wrap;justify-content:center;gap:20px;margin-top:30px;">
+
+<div style="background:rgba(255,255,255,0.15);padding:20px;border-radius:15px;width:250px;">
+<h3>😢 You're Sad</h3>
+<p>I'm always with you ❤️</p>
+</div>
+
+<div style="background:rgba(255,255,255,0.15);padding:20px;border-radius:15px;width:250px;">
+<h3>😞 You're Stressed</h3>
+<p>Take a deep breath, everything will be fine</p>
+</div>
+
+<div style="background:rgba(255,255,255,0.15);padding:20px;border-radius:15px;width:250px;">
+<h3>💔 You Miss Me</h3>
+<p>I miss you too ❤️</p>
+</div>
+
+</div>
+</section>
+
+<!-- =======================
+     EMERGENCY BUTTON
+======================= -->
+
+<section style="text-align:center;padding:60px 20px;">
+
+<h2>🔥 Emergency Motivation</h2>
+
+<button onclick="motivate()" 
+style="padding:15px 30px;border:none;border-radius:30px;background:red;color:white;font-size:16px;margin-top:20px;">
+Press Only If You Feel Low
+</button>
+
+</section>
+
+<!-- =======================
+     COUNTDOWN
+======================= -->
+
+<section style="text-align:center;padding:60px 20px;">
+
+<h2>⏳ Countdown</h2>
+
+<h1 id="countdown">00:00:00</h1>
+
+</section>
+
+<script>
+function motivate(){
+alert("You are stronger than you think ❤️ Keep going!");
+}
+
+/* Simple Countdown Demo */
+let seconds = 0;
+setInterval(()=>{
+seconds++;
+document.getElementById("countdown").innerText =
+"00:00:" + (seconds < 10 ? "0"+seconds : seconds);
+},1000);
+</script><!-- =======================
+     GALLERY SECTION
+======================= -->
+
+<section id="gallery" style="padding:80px 20px;text-align:center;">
+
+<h2>📸 Our Memories</h2>
+
+<div style="display:flex;flex-wrap:wrap;justify-content:center;gap:15px;margin-top:30px;">
+
+<div style="width:200px;height:200px;background:rgba(255,255,255,0.2);border-radius:15px;display:flex;align-items:center;justify-content:center;">
+Photo 1
+</div>
+
+<div style="width:200px;height:200px;background:rgba(255,255,255,0.2);border-radius:15px;display:flex;align-items:center;justify-content:center;">
+Photo 2
+</div>
+
+<div style="width:200px;height:200px;background:rgba(255,255,255,0.2);border-radius:15px;display:flex;align-items:center;justify-content:center;">
+Photo 3
+</div>
+
+</div>
+</section>
+
+<!-- =======================
+     LOVE LETTER
+======================= -->
+
+<section style="padding:80px 20px;text-align:center;">
+
+<h2>✉️ Final Love Letter</h2>
+
+<div style="max-width:600px;margin:auto;background:rgba(255,255,255,0.15);padding:25px;border-radius:15px;">
+
+<p>
+Dear Abhi ❤️<br><br>
+
+You are the most special person in my life.<br>
+Every moment with you is a memory I will never forget.<br><br>
+
+No matter how far we are,<br>
+my heart always belongs to you 💙<br><br>
+
+I love you forever ❤️
+</p>
+
+</div>
+</section>
+
+<!-- =======================
+     SECRET MESSAGE
+======================= -->
+
+<section style="padding:80px 20px;text-align:center;">
+
+<h2>🔐 Secret Message</h2>
+
+<input id="pass" type="password" placeholder="Enter password"
+style="padding:10px;border-radius:10px;border:none;">
+
+<br><br>
+
+<button onclick="checkPass()"
+style="padding:10px 25px;border:none;border-radius:20px;background:#ff4d6d;color:white;">
+Unlock
+</button>
+
+<p id="secret" style="margin-top:20px;display:none;font-size:18px;">
+You found my heart ❤️ I love you forever 💙
+</p>
+
+</section>
+
+<script>
+function checkPass(){
+let p = document.getElementById("pass").value;
+
+if(p === "love"){
+document.getElementById("secret").style.display = "block";
+}else{
+alert("Wrong password 😢 Try again");
+}
+}
+</script><!-- =======================
+     MUSIC PLAYER
+======================= -->
+
+<section style="padding:80px 20px;text-align:center;">
+
+<h2>🎵 Our Song</h2>
+
+<audio id="song" loop>
+<source src="music.mp3" type="audio/mpeg">
+</audio>
+
+<button onclick="playMusic()"
+style="padding:12px 25px;border:none;border-radius:25px;background:#ff4d6d;color:white;">
+▶ Play / Pause Music
+</button>
+
+</section>
+
+<!-- =======================
+     FLOATING HEARTS CONTAINER
+======================= -->
+
+<div id="hearts"></div>
+
+<style>
+
+/* =======================
+   FLOATING HEARTS
+======================= */
+
+.heart{
+position:fixed;
+bottom:-20px;
+color:pink;
+font-size:20px;
+animation:floatUp 6s linear infinite;
+opacity:0.7;
+}
+
+@keyframes floatUp{
+0%{
+transform:translateY(0) scale(1);
+opacity:1;
+}
+100%{
+transform:translateY(-110vh) scale(1.5);
+opacity:0;
+}
+}
+
+/* =======================
+   MOBILE RESPONSIVE
+======================= */
+
+@media(max-width:768px){
+h1{font-size:28px;}
+h2{font-size:22px;}
+div{flex-direction:column;}
+}
+
+</style>
+
+<script>
+
+/* =======================
+   MUSIC CONTROL
+======================= */
+
+function playMusic(){
+let song = document.getElementById("song");
+
+if(song.paused){
+song.play();
+}else{
+song.pause();
+}
+}
+
+/* =======================
+   HEART ANIMATION
+======================= */
+
+function createHeart(){
+let heart = document.createElement("div");
+heart.classList.add("heart");
+heart.innerHTML = "❤️";
+
+heart.style.left = Math.random() * 100 + "vw";
+heart.style.fontSize = (10 + Math.random()*20) + "px";
+
+document.body.appendChild(heart);
+
+setTimeout(()=>{
+heart.remove();
+},6000);
+}
+
+setInterval(createHeart,400);
+</script>/* =======================
+   FINAL TOUCHES + FIXES
+======================= */
+
+<script>
+
+/* Smooth scroll fix */
+document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+anchor.addEventListener("click", function(e){
+e.preventDefault();
+document.querySelector(this.getAttribute("href"))
+.scrollIntoView({behavior:"smooth"});
+});
+});
+
+/* Auto greeting effect */
+window.onload = function(){
+console.log("Love Website Loaded ❤️");
+};
+
+/* Surprise button extra effect */
+document.querySelector(".btn").addEventListener("click", function(){
+alert("Welcome My Love ❤️ Enjoy the surprise!");
+});
+
+/* Extra floating hearts burst on load */
+for(let i=0;i<10;i++){
+setTimeout(()=>{
+let heart = document.createElement("div");
+heart.classList.add("heart");
+heart.innerHTML = "💖";
+heart.style.left = Math.random()*100 + "vw";
+document.body.appendChild(heart);
+
+setTimeout(()=>heart.remove(),6000);
+},i*300);
+}
+
+</script>
+
+</body>
+</html>
