@@ -3,25 +3,18 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>For You ❤️</title>
+<title>My Love World ❤️</title>
 
-<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap" rel="stylesheet">
 
 <style>
 
-/* ================= GLOBAL ================= */
-
-*{
-margin:0;
-padding:0;
-box-sizing:border-box;
-font-family:Poppins;
-}
+*{margin:0;padding:0;box-sizing:border-box;font-family:Poppins;}
 
 body{
 background:linear-gradient(-45deg,#ff9a9e,#fad0c4,#a18cd1,#fbc2eb);
 background-size:400% 400%;
-animation:bg 12s ease infinite;
+animation:bg 10s ease infinite;
 color:white;
 overflow-x:hidden;
 }
@@ -30,19 +23,6 @@ overflow-x:hidden;
 0%{background-position:0% 50%;}
 50%{background-position:100% 50%;}
 100%{background-position:0% 50%;}
-}
-
-/* NAV */
-nav{
-position:fixed;
-top:0;
-width:100%;
-display:flex;
-justify-content:space-between;
-padding:15px 20px;
-background:rgba(255,255,255,0.1);
-backdrop-filter:blur(10px);
-z-index:1000;
 }
 
 /* HERO */
@@ -61,25 +41,20 @@ padding:35px;
 border-radius:25px;
 backdrop-filter:blur(15px);
 max-width:700px;
-box-shadow:0 10px 30px rgba(0,0,0,0.2);
 }
 
 h1{font-size:40px;margin-bottom:10px;}
 p{opacity:0.9;line-height:1.6}
 
+/* BUTTON */
 .btn{
-margin:8px;
+margin:6px;
 padding:12px 18px;
 border:none;
 border-radius:30px;
 background:#ff4d6d;
 color:white;
 cursor:pointer;
-transition:0.3s;
-}
-
-.btn:hover{
-transform:scale(1.05);
 }
 
 /* SECTIONS */
@@ -97,23 +72,16 @@ margin-top:20px;
 
 .box{
 background:rgba(255,255,255,0.12);
-padding:20px;
+padding:18px;
 border-radius:15px;
 cursor:pointer;
-transition:0.3s;
-}
-
-.box:hover{
-transform:translateY(-8px);
 }
 
 /* MODAL */
 .modal{
 position:fixed;
-top:0;
-left:0;
-width:100%;
-height:100%;
+top:0;left:0;
+width:100%;height:100%;
 display:none;
 justify-content:center;
 align-items:center;
@@ -123,9 +91,9 @@ background:rgba(0,0,0,0.6);
 .modal-content{
 background:white;
 color:black;
-padding:25px;
+padding:20px;
 border-radius:15px;
-max-width:320px;
+max-width:380px;
 text-align:center;
 }
 
@@ -134,12 +102,18 @@ text-align:center;
 position:fixed;
 bottom:-20px;
 color:pink;
-font-size:18px;
 animation:float 6s linear infinite;
 }
 
 @keyframes float{
 to{transform:translateY(-110vh);opacity:0;}
+}
+
+img{
+width:100%;
+height:200px;
+object-fit:cover;
+border-radius:15px;
 }
 
 input{
@@ -154,19 +128,14 @@ margin-top:10px;
 
 <body>
 
-<nav>
-<div>❤️ Love World</div>
-<div>Timeline | Love | More</div>
-</nav>
-
 <!-- HERO -->
 <section class="hero">
 <div class="card">
 <h1>Hey Abhi ❤️</h1>
-<p>This website is not code… it's emotions written in pixels 💙</p>
+<p>Your complete love world is ready 💙</p>
 
-<button class="btn" onclick="start()">Open Surprise</button>
-<button class="btn" onclick="music()">🎵 Music</button>
+<button class="btn" onclick="showMessage('Welcome to your love world ❤️')">Open Surprise</button>
+<button class="btn" onclick="toggleSong()">🎵 Play Song</button>
 </div>
 </section>
 
@@ -174,10 +143,10 @@ margin-top:10px;
 <section class="section">
 <h2>🕰️ Our Journey Timeline</h2>
 <div class="grid">
-<div class="box">💌 First Message</div>
-<div class="box">❤️ First Meet</div>
-<div class="box">💞 Relationship Start</div>
-<div class="box">📞 First Call</div>
+<div class="box">💌 First Message (14 July 2024 • 6:39 PM)</div>
+<div class="box">📞 First Call (14 Aug 2025 • 12:46 PM)</div>
+<div class="box">💞 Relationship Start (12 Aug 2025)</div>
+<div class="box">❤️ First Meet (2 April 2025 • 5:30 PM)</div>
 </div>
 </section>
 
@@ -185,41 +154,29 @@ margin-top:10px;
 <section class="section">
 <h2>💌 Open When</h2>
 <div class="grid">
-<div class="box" onclick="msg('Stay strong ❤️')">Sad</div>
-<div class="box" onclick="msg('Everything will be fine ❤️')">Stressed</div>
-<div class="box" onclick="msg('I miss you ❤️')">Missing Me</div>
-<div class="box" onclick="msg('You are amazing ❤️')">Demotivated</div>
+<div class="box" onclick="showSad()">Sad</div>
+<div class="box" onclick="showStressed()">Stressed</div>
+<div class="box" onclick="showMissing()">Missing Me</div>
+<div class="box" onclick="showDemotivated()">Demotivated</div>
 </div>
 </section>
 
-<!-- BUTTONS -->
+<!-- EMERGENCY -->
 <section class="section">
-<h2>🤍 What You Need Right Now</h2>
-
-<button class="btn" onclick="msg('🤗 Hug sent ❤️')">Hug</button>
-<button class="btn" onclick="msg('😘 Kiss sent ❤️')">Kiss</button>
-<button class="btn" onclick="msg('💬 I am here ❤️')">Wanna Talk</button>
-<button class="btn" onclick="msg('💪 You are strong ❤️')">Motivation</button>
-<button class="btn" onclick="msg('💆 Relax ❤️')">Champi</button>
-<button class="btn" onclick="msg('📞 Calling you… (virtual) ❤️')">Video Call</button>
-<button class="btn" onclick="msg('🐥 Piku Mode ❤️')">Piku</button>
+<h2>🔥 Emergency Motivation</h2>
+<div class="box" onclick="showEmergency()">Tap Here</div>
 </section>
 
-<!-- COUNTDOWN -->
+<!-- PROUD -->
 <section class="section">
-<h2>⏳ Birthday Countdown</h2>
-<h1 id="time">0</h1>
+<h2>🏆 What I'm Proud Of</h2>
+<div class="box" onclick="showProud()">Read</div>
 </section>
 
-<!-- LOVE LETTER -->
+<!-- FINAL LOVE LETTER -->
 <section class="section">
 <h2>✉️ Final Love Letter</h2>
-<p style="max-width:700px;margin:auto;">
-You are my peace, my happiness, my everything ❤️
-I don’t need the world if I have you.
-Every heartbeat says your name.
-Forever yours 💙
-</p>
+<div class="box" onclick="showLove()">Open Letter</div>
 </section>
 
 <!-- SECRET -->
@@ -227,6 +184,12 @@ Forever yours 💙
 <h2>🔐 Secret Message</h2>
 <input id="pass" placeholder="Enter password">
 <button class="btn" onclick="check()">Unlock</button>
+</section>
+
+<!-- MEMORIES -->
+<section class="section">
+<h2>📸 Memories</h2>
+<div class="grid" id="gallery"></div>
 </section>
 
 <!-- MODAL -->
@@ -237,62 +200,151 @@ Forever yours 💙
 </div>
 </div>
 
-<!-- MUSIC -->
-<audio id="song">
-<source src="song.mp3" type="audio/mp3">
-</audio>
-
-<script>
-
-/* hearts */
-setInterval(()=>{
-let h=document.createElement("div");
-h.className="heart";
-h.innerHTML="❤️";
-h.style.left=Math.random()*100+"vw";
-document.body.appendChild(h);
-setTimeout(()=>h.remove(),6000);
-},200);
-
-/* modal */
-function msg(t){
-document.getElementById("modal").style.display="flex";
-document.getElementById("msg").innerText=t;
+<!-- AUDIO -->
+<audio id="song"></audio>
+/* ================= GLOBAL MODAL ================= */
+function showMessage(text){
+document.getElementById("msg").innerText = text;
+document.getElementById("modal").style.display = "flex";
 }
 
 function closeM(){
-document.getElementById("modal").style.display="none";
+document.getElementById("modal").style.display = "none";
 }
 
-/* music */
-let p=false;
-function music(){
-let s=document.getElementById("song");
-if(!p){s.play();p=true;}
-else{s.pause();p=false;}
+/* ================= SONG ================= */
+
+const SONG_URL = "PASTE_SONG_LINK_HERE";
+let audio = document.getElementById("song");
+let playing = false;
+
+function toggleSong(){
+if(!audio.src){
+audio.src = SONG_URL;
 }
 
-/* start */
-function start(){
-msg("Welcome to your love world ❤️");
-}
-
-/* secret */
-function check(){
-if(document.getElementById("pass").value==="love"){
-msg("❤️ You unlocked my heart ❤️");
+if(!playing){
+audio.play();
+playing = true;
 }else{
-msg("Wrong password 😢");
+audio.pause();
+playing = false;
 }
 }
 
-/* countdown */
-let i=0;
+/* ================= MEMORIES ================= */
+
+const MEMORIES = [
+"https://source.unsplash.com/400x300/?love",
+"https://source.unsplash.com/401x300/?couple",
+"https://source.unsplash.com/402x300/?romantic",
+"https://source.unsplash.com/403x300/?memories"
+];
+
+let g = document.getElementById("gallery");
+
+MEMORIES.forEach(img=>{
+let i = document.createElement("img");
+i.src = img;
+g.appendChild(i);
+});
+
+/* ================= BIRTHDAY COUNTDOWN (30 JUNE) ================= */
+
+function countdown(){
+let now = new Date();
+let year = now.getFullYear();
+
+let bday = new Date(year,5,30);
+
+if(now > bday){
+bday = new Date(year+1,5,30);
+}
+
+let diff = bday - now;
+
+let d = Math.floor(diff/86400000);
+let h = Math.floor(diff/3600000)%24;
+let m = Math.floor(diff/60000)%60;
+let s = Math.floor(diff/1000)%60;
+
+let el = document.getElementById("countdown");
+if(el){
+el.innerText = d+"d "+h+"h "+m+"m "+s+"s ❤️";
+}
+}
+
+setInterval(countdown,1000);
+countdown();
+
+/* ================= PASSWORD ================= */
+
+function check(){
+let p = document.getElementById("pass").value;
+if(p === "love"){
+showMessage(`❤️ Secret unlocked`);
+}else{
+showMessage(`Wrong password 😢`);
+}
+}
+
+/* ================= OPEN WHEN MESSAGES (EXACT TEXTS) ================= */
+
+function showSad(){
+showMessage(`If you're reading this, I'm guessing today hasn't been easy. I just want you to remember that you don't have to carry everything alone. I'm always on your side, even on the days when nothing feels right. Better days are coming, and until then, I'm here for you. ❤️`);
+}
+
+function showStressed(){
+showMessage(`Hey love,
+If you're reading this, life is probably feeling a little overwhelming right now. I wish I could be there to take some of your stress away and replace it with the biggest hug. Since I can't, let this letter remind you to take a deep breath. You don't have to figure everything out today. One step, one task, one moment at a time.
+You've made it through every difficult day before, and I know you'll get through this one too. No matter how heavy things feel, remember that you're never facing them alone. I'm always on your team, always cheering for you, and always so proud of you.
+Take a deep breath, my love. You've got this... and you've got me. ❤️`);
+}
+
+function showDemotivated(){
+showMessage(`Hey love,
+If you're reading this, I'm guessing things aren't going the way you hoped, and that's okay. Not every day has to be productive, and not every setback means you're failing. Sometimes progress is quiet, slow, and hard to notice—but it's still progress.
+I hope you don't let one bad day make you doubt yourself. You're capable of so much more than you give yourself credit for. I've seen your strength, your hard work, and the way you keep going even when things get tough. That's something to be proud of.
+So don't give up because today feels difficult. Rest if you need to, take your time, and then try again. I'll always believe in you, even on the days when you don't believe in yourself.`);
+}
+
+function showMissing(){
+showMessage(`Hey love,
+If you're missing me right now, just remember this—distance can never change what you mean to me. Every day apart is simply one day closer to seeing you again. Until then, carry a little piece of my love with you. ❤️`);
+}
+
+/* ================= EMERGENCY ================= */
+
+function showEmergency(){
+showMessage(`If you're reading this because you're ready to give up... don't make that decision on a bad day. Rest if you need to, but come back tomorrow. I know you can do this, and I'll always be in your corner. ❤️`);
+}
+
+/* ================= PROUD ================= */
+
+function showProud(){
+showMessage(`I’m really proud of you. You handle life with strength, responsibility, and patience. Even when things are hard, you never give up. ❤️`);
+}
+
+/* ================= LOVE LETTER ================= */
+
+function showLove(){
+showMessage(`To My Favorite Person, ❤️
+I don't think I tell you this enough, but I truly admire the kind of person you are. You're someone who shows up—for your work, for the people you care about, and for us. No matter how busy life gets, you always try to make time for me, and that means more than you probably realize.
+I love how responsible you are, how seriously you take your work, and how you quietly handle everything on your own. You care for people without expecting anything in return, you respect everyone, and your loyalty gives me a sense of peace that's hard to put into words.
+You don't have to be perfect for me to love you. I love your dedication, your strength, your kindness, and the way you never stop trying. And yes... I also think you're incredibly handsome. 🤍
+Thank you for choosing us every single day, even on the busiest ones. Thank you for making me feel loved, safe, and important. Having you in my life is one of the best things that has ever happened to me.
+No matter where life takes us, I hope you never forget how deeply you're loved, appreciated, and admired.
+Forever yours. ❤️`);
+}
+
+/* ================= HEARTS ANIMATION ================= */
+
 setInterval(()=>{
-document.getElementById("time").innerText=i++;
-},1000);
+let h = document.createElement("div");
+h.className = "heart";
+h.innerHTML = "❤️";
+h.style.left = Math.random()*100 + "vw";
+document.body.appendChild(h);
 
-</script>
-
-</body>
-</html>
+setTimeout(()=>h.remove(),6000);
+},250);
