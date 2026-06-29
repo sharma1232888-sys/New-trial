@@ -5,206 +5,509 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>My Love World ❤️</title>
 
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+
 <style>
 
-body{
+*{
 margin:0;
-font-family:Arial;
-background:linear-gradient(-45deg,#ff9a9e,#fad0c4,#a18cd1,#fbc2eb);
+padding:0;
+box-sizing:border-box;
+font-family:'Poppins',sans-serif;
+scroll-behavior:smooth;
+}
+
+body{
+background:linear-gradient(-45deg,#ff9a9e,#fad0c4,#fbc2eb,#a18cd1);
 background-size:400% 400%;
-animation:bg 10s infinite;
-color:white;
+animation:bg 12s ease infinite;
+color:#fff;
+overflow-x:hidden;
 text-align:center;
 }
 
 @keyframes bg{
-0%{background-position:0% 50%}
-50%{background-position:100% 50%}
-100%{background-position:0% 50%}
+0%{background-position:0% 50%;}
+50%{background-position:100% 50%;}
+100%{background-position:0% 50%;}
 }
 
-/* LOCK SCREEN */
+.screen{
+display:none;
+padding:40px 20px;
+animation:fade .8s ease;
+}
+
+@keyframes fade{
+from{
+opacity:0;
+transform:translateY(20px);
+}
+to{
+opacity:1;
+transform:translateY(0);
+}
+}
+
+h1{
+font-size:38px;
+margin-bottom:15px;
+}
+
+h2{
+margin:35px 0 15px;
+font-size:28px;
+}
+
+p{
+line-height:1.8;
+font-size:16px;
+}
+
+button{
+padding:12px 26px;
+border:none;
+border-radius:30px;
+background:#ff4d88;
+color:#fff;
+font-size:16px;
+cursor:pointer;
+transition:.3s;
+margin-top:15px;
+}
+
+button:hover{
+transform:scale(1.05);
+}
+
+input{
+width:260px;
+padding:14px;
+border:none;
+outline:none;
+border-radius:30px;
+text-align:center;
+font-size:16px;
+margin-top:15px;
+}
+
+.box{
+background:rgba(255,255,255,.15);
+backdrop-filter:blur(10px);
+padding:18px;
+margin:12px auto;
+max-width:380px;
+border-radius:20px;
+cursor:pointer;
+transition:.3s;
+box-shadow:0 10px 25px rgba(0,0,0,.2);
+}
+
+.box:hover{
+transform:translateY(-5px);
+background:rgba(255,255,255,.22);
+}.modal{
+position:fixed;
+top:0;
+left:0;
+width:100%;
+height:100%;
+background:rgba(0,0,0,.75);
+display:none;
+justify-content:center;
+align-items:center;
+padding:20px;
+z-index:9999;
+}
+
+.modal-content{
+background:#fff;
+color:#222;
+width:100%;
+max-width:420px;
+padding:25px;
+border-radius:20px;
+animation:popup .35s ease;
+text-align:left;
+}
+
+@keyframes popup{
+from{
+transform:scale(.8);
+opacity:0;
+}
+to{
+transform:scale(1);
+opacity:1;
+}
+}
+
+.modal-content p{
+white-space:pre-line;
+line-height:1.8;
+}
+
 #lock{
 position:fixed;
-top:0;left:0;
-width:100%;height:100%;
+top:0;
+left:0;
+width:100%;
+height:100%;
+background:rgba(0,0,0,.82);
 display:flex;
 flex-direction:column;
 justify-content:center;
 align-items:center;
-background:rgba(0,0,0,0.6);
-z-index:999;
+z-index:99999;
 }
 
-input{
-padding:10px;
-border-radius:10px;
-border:none;
-margin:10px;
+#countdown{
+font-size:28px;
+font-weight:bold;
+margin:20px 0;
 }
 
-button{
-padding:10px 20px;
-border:none;
-border-radius:20px;
-background:#ff4d6d;
-color:white;
-cursor:pointer;
+.song{
+margin:8px;
 }
 
-/* SCREENS */
-.screen{
-display:none;
-padding:40px;
-}
-
-.box{
-background:rgba(255,255,255,0.15);
-padding:15px;
-margin:10px;
-border-radius:15px;
-cursor:pointer;
-}
-
-/* MODAL */
-.modal{
-position:fixed;
-top:0;left:0;
-width:100%;height:100%;
-background:rgba(0,0,0,0.7);
-display:none;
-justify-content:center;
-align-items:center;
-}
-
-.modal-content{
-background:white;
-color:black;
-padding:20px;
-border-radius:15px;
-max-width:400px;
+footer{
+padding:40px 15px;
+font-size:14px;
+opacity:.85;
 }
 
 </style>
+
 </head>
 
 <body>
 
-<!-- 🔐 PASSWORD -->
 <div id="lock">
-<h2>🔐 Enter Password</h2>
-<input id="pass" placeholder="Enter password">
-<button onclick="check()">Unlock</button>
-</div>
 
-<!-- 🎂 BIRTHDAY SCREEN -->
-<div id="birthday" class="screen">
+<h1>🔐 My Love World ❤️</h1>
 
-<h1>🎂 Happy Birthday My Love ❤️</h1>
-<p>Welcome to your special world 💙</p>
+<input
+id="pass"
+type="password"
+placeholder="Enter Password">
 
-<button onclick="openApp()">Continue ➜</button>
-
-</div>
-
-<!-- 💙 MAIN APP -->
-<div id="app" class="screen">
-
-<h1>Hey Abhi ❤️</h1>
-<p>Your Love World is Ready 💙</p>
-
-<!-- SONGS -->
-<h2>🎵 Songs</h2>
-<button onclick="playSong(1)">Jab Tu Sajan</button>
-<button onclick="playSong(2)">Dooron Dooron</button>
-<button onclick="playSong(3)">Tu Zaroori</button>
-
-<!-- TIMELINE -->
-<h2>🕰️ Timeline</h2>
-<div class="box">First Message</div>
-<div class="box">First Meet</div>
-<div class="box">Relationship Start</div>
-<div class="box">First Call</div>
-
-<!-- OPEN WHEN -->
-<h2>💌 Open When</h2>
-<div class="box" onclick="sad()">Sad</div>
-<div class="box" onclick="stress()">Stressed</div>
-<div class="box" onclick="demo()">Demotivated</div>
-<div class="box" onclick="miss()">Missing Me</div>
-
-<!-- EXTRA -->
-<div class="box" onclick="emergency()">Emergency Motivation</div>
-<div class="box" onclick="proud()">What I'm Proud Of</div>
-<div class="box" onclick="unknown()">Things You Don’t Know</div>
-<div class="box" onclick="love()">Final Love Letter</div>
-<div class="box" onclick="secret()">Secret Message</div>
+<button onclick="checkPassword()">
+Unlock ❤️
+</button>
 
 </div>
 
-<!-- MODAL -->
-<div class="modal" id="modal">
+<div
+id="birthday"
+class="screen">
+
+<h1>🎂 Happy Birthday My Love ❤️</h1><p>
+
+Today is not just another day...
+
+It's the day the most precious person came into this world.
+
+Thank you for filling my life with love, happiness, laughter, and countless beautiful memories.
+
+Your smile is my favorite place,
+your voice is my favorite comfort,
+and your happiness will always be one of my biggest priorities.
+
+I hope this year brings you endless happiness, success, peace, good health, and everything you've ever wished for.
+
+No matter where life takes us,
+I'll always be cheering for you,
+supporting you,
+loving you,
+and choosing you.
+
+Happy Birthday,
+my favorite person,
+my safe place,
+my forever. ❤️
+
+</p>
+
+<h2>🎂 Birthday Countdown</h2>
+
+<div id="countdown">
+Loading...
+</div>
+
+<button onclick="openApp()">
+Continue ➜
+</button>
+
+</div>
+
+<div
+id="app"
+class="screen">
+
+<h1>❤️ Welcome My Love ❤️</h1>
+
+<p>
+
+Every love story is beautiful,
+but ours is my favorite. 🤍
+
+</p>
+
+<h2>🕰️ Our Timeline</h2>
+
+<div class="box">
+💬 First Message<br>
+14 July 2024 • 6:39 PM
+</div>
+
+<div class="box">
+❤️ Relationship Started<br>
+12 August 2024
+</div>
+
+<div class="box">
+📞 First Call<br>
+14 August 2025 • 12:46
+</div>
+
+<div class="box">
+🤍 First Meet<br>
+2 April 2025 • 5:30 PM
+</div>
+
+<div class="box">
+🎂 Birthday<br>
+30 June
+</div><h2>💌 Open When...</h2>
+
+<div class="box" onclick="sad()">
+😔 Open When You're Sad
+</div>
+
+<div class="box" onclick="stress()">
+😣 Open When You're Stressed
+</div>
+
+<div class="box" onclick="demo()">
+💪 Open When You're Demotivated
+</div>
+
+<div class="box" onclick="miss()">
+🥺 Open When You're Missing Me
+</div>
+
+<div class="box" onclick="emergency()">
+🚨 Emergency Motivation
+</div>
+
+<div class="box" onclick="proud()">
+🌟 What I'm Proud Of
+</div>
+
+<div class="box" onclick="unknown()">
+🤍 Things You Don't Know
+</div>
+
+<div class="box" onclick="love()">
+💌 Final Love Letter
+</div>
+
+<div class="box" onclick="secret()">
+🔐 Secret Message
+</div>
+
+<h2>🤍 Things We Need To Do Together...</h2>
+
+<div class="box">📸 Click a picture together</div>
+
+<div class="box">🎬 Go for a movie date</div>
+
+<div class="box">🏔️ Go trekking and get lost in the views</div>
+
+<div class="box">🧺 A picnic date</div>
+
+<div class="box">🍳 Try new recipes and make a mess in the kitchen together</div>
+
+<div class="box">🎲 Play UNO, Ludo, or just tease each other</div>
+
+<div class="box">🛋️ Build a blanket fort and watch movies inside it</div>
+
+<div class="box">🎧 Listen to music and just chill together</div>
+
+<div class="box">🤍 Have lazy days doing absolutely nothing together</div>
+
+<div class="box">🌧️ Watch sunsets, rain, or simply sit quietly together</div>
+
+<div class="box">
+❤️ And always...
+choose each other in every small moment.
+</div><h2>🎵 Our Songs</h2>
+
+<button class="song" onclick="playSong(1)">
+Jab Tu Sajan
+</button>
+
+<button class="song" onclick="playSong(2)">
+Dooron Dooron
+</button>
+
+<button class="song" onclick="playSong(3)">
+Tu Zaroori
+</button>
+
+<footer>
+
+Made with ❤️
+Forever & Always 🤍
+
+</footer>
+
+</div>
+
+<!-- POPUP -->
+
+<div id="modal" class="modal">
+
 <div class="modal-content">
+
 <p id="text"></p>
-<button onclick="closeM()">Close</button>
-</div>
+
+<button onclick="closeModal()">
+Close ❤️
+</button>
+
 </div>
 
-<!-- AUDIO -->
+</div>
+
 <audio id="audio"></audio>
 
 <script>
 
-/* FLOW FIX */
+const modal=document.getElementById("modal");
+const text=document.getElementById("text");
+const audio=document.getElementById("audio");
 
-/* PASSWORD */
-function check(){
-let p=document.getElementById("pass").value;
+function show(msg){
+text.innerText=msg;
+modal.style.display="flex";
+}
 
-if(p==="love"){
+function closeModal(){
+modal.style.display="none";
+}
+
+window.onclick=function(e){
+if(e.target==modal){
+modal.style.display="none";
+}
+}
+
+function checkPassword(){
+
+let pass=document.getElementById("pass").value;
+
+if(pass==="love"){
+
 document.getElementById("lock").style.display="none";
 document.getElementById("birthday").style.display="block";
-}
+
+}else{
+
+alert("Wrong Password ❤️");
+
 }
 
-/* BIRTHDAY → APP */
+}
+
 function openApp(){
+
 document.getElementById("birthday").style.display="none";
-document.getElementById("app").style.display="block";
+d ocument.getElementById("app").style.display="block";
+
+}function sad(){
+show("If you're reading this, I'm guessing today hasn't been easy. I'm always with you, even on your worst days. ❤️");
 }
 
-/* MODAL */
-function show(t){
-document.getElementById("text").innerText=t;
-document.getElementById("modal").style.display="flex";
-}
-function closeM(){
-document.getElementById("modal").style.display="none";
+function stress(){
+show("Take a deep breath my love. You don't have to solve everything today. One step at a time. I'm always proud of you. ❤️");
 }
 
-/* SONGS */
-let audio=document.getElementById("audio");
+function demo(){
+show("Don't doubt yourself. You've already survived every hard day till now. I believe in you always. ❤️");
+}
+
+function miss(){
+show("Distance can never change what you mean to me. I'm always just one thought away. ❤️");
+}
+
+function emergency(){
+show("Don't give up. Not today, not ever. Rest if needed, but keep going tomorrow. I'm always in your corner. ❤️");
+}
+
+function proud(){
+show("I'm proud of the way you handle life, your hard work, your kindness, and your strength. ❤️");
+}
+
+function unknown(){
+show("You don't know how much I notice you... every little effort, every silent struggle. I see it all. ❤️");
+}
+
+function love(){
+show("You are my peace, my happiness, and my favorite person in this whole world. ❤️");
+}
+
+function secret(){
+show("Sometimes I act different, but it's only because I miss you. You mean more than I say. ❤️");
+  }// 🎂 COUNTDOWN (30 JUNE)
+
+function updateCountdown(){
+
+let target=new Date("June 30, 2026 00:00:00").getTime();
+let now=new Date().getTime();
+let diff=target-now;
+
+if(diff<=0){
+document.getElementById("countdown").innerText="🎉 Happy Birthday ❤️";
+return;
+}
+
+let days=Math.floor(diff/(1000*60*60*24));
+let hours=Math.floor((diff%(1000*60*60*24))/(1000*60*60));
+let minutes=Math.floor((diff%(1000*60*60))/(1000*60));
+let seconds=Math.floor((diff%(1000*60))/1000);
+
+document.getElementById("countdown").innerText=
+days+"d "+hours+"h "+minutes+"m "+seconds+"s ❤️";
+
+}
+
+setInterval(updateCountdown,1000);
+updateCountdown();
+
+
+// 🎵 SONGS
 
 function playSong(n){
 
-if(n===1) audio.src="https://your-link/jab-tu-sajan.mp3";
-if(n===2) audio.src="https://your-link/dooron-dooron.mp3";
-if(n===3) audio.src="https://your-link/tu-zaroori.mp3";
+audio.pause();
 
-audio.play();
+if(n===1){
+audio.src="https://your-link/jab-tu-sajan.mp3";
 }
 
-/* MESSAGES */
-function sad(){show("I'm always with you ❤️");}
-function stress(){show("Take a deep breath ❤️");}
-function demo(){show("You're strong ❤️");}
-function miss(){show("Distance can't change love ❤️");}
-function emergency(){show("Don't give up ❤️");}
-function proud(){show("I'm proud of you ❤️");}
-function unknown(){show("I notice everything about you ❤️");}
-function love(){show("You are my everything ❤️");}
-function secret(){show("Secret unlocked ❤️");}
+if(n===2){
+audio.src="https://your-link/dooron-dooron.mp3";
+}
 
+if(n===3){
+audio.src="https://your-link/tu-zaroori.mp3";
+}
+
+audio.play();
+
+}
 </script>
 
 </body>
