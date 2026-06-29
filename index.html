@@ -9,7 +9,12 @@
 
 <style>
 
-*{margin:0;padding:0;box-sizing:border-box;font-family:Poppins;}
+*{
+margin:0;
+padding:0;
+box-sizing:border-box;
+font-family:Poppins;
+}
 
 body{
 background:linear-gradient(-45deg,#ff9a9e,#fad0c4,#a18cd1,#fbc2eb);
@@ -59,7 +64,7 @@ cursor:pointer;
 
 /* SECTIONS */
 .section{
-padding:80px 20px;
+padding:70px 20px;
 text-align:center;
 }
 
@@ -75,6 +80,11 @@ background:rgba(255,255,255,0.12);
 padding:18px;
 border-radius:15px;
 cursor:pointer;
+transition:0.3s;
+}
+
+.box:hover{
+transform:scale(1.05);
 }
 
 /* MODAL */
@@ -85,7 +95,7 @@ width:100%;height:100%;
 display:none;
 justify-content:center;
 align-items:center;
-background:rgba(0,0,0,0.6);
+background:rgba(0,0,0,0.7);
 }
 
 .modal-content{
@@ -106,7 +116,10 @@ animation:float 6s linear infinite;
 }
 
 @keyframes float{
-to{transform:translateY(-110vh);opacity:0;}
+to{
+transform:translateY(-110vh);
+opacity:0;
+}
 }
 
 img{
@@ -156,8 +169,8 @@ margin-top:10px;
 <div class="grid">
 <div class="box" onclick="showSad()">Sad</div>
 <div class="box" onclick="showStressed()">Stressed</div>
-<div class="box" onclick="showMissing()">Missing Me</div>
 <div class="box" onclick="showDemotivated()">Demotivated</div>
+<div class="box" onclick="showMissing()">Missing Me</div>
 </div>
 </section>
 
@@ -173,10 +186,10 @@ margin-top:10px;
 <div class="box" onclick="showProud()">Read</div>
 </section>
 
-<!-- FINAL LOVE LETTER -->
+<!-- LOVE LETTER -->
 <section class="section">
 <h2>✉️ Final Love Letter</h2>
-<div class="box" onclick="showLove()">Open Letter</div>
+<div class="box" onclick="showLove()">Open</div>
 </section>
 
 <!-- SECRET -->
@@ -202,38 +215,13 @@ margin-top:10px;
 
 <!-- AUDIO -->
 <audio id="song"></audio>
-/* ================= GLOBAL MODAL ================= */
-function showMessage(text){
-document.getElementById("msg").innerText = text;
-document.getElementById("modal").style.display = "flex";
-}
 
-function closeM(){
-document.getElementById("modal").style.display = "none";
-}
+<script>
 
-/* ================= SONG ================= */
-
+/* SONG */
 const SONG_URL = "PASTE_SONG_LINK_HERE";
-let audio = document.getElementById("song");
-let playing = false;
 
-function toggleSong(){
-if(!audio.src){
-audio.src = SONG_URL;
-}
-
-if(!playing){
-audio.play();
-playing = true;
-}else{
-audio.pause();
-playing = false;
-}
-}
-
-/* ================= MEMORIES ================= */
-
+/* MEMORIES */
 const MEMORIES = [
 "https://source.unsplash.com/400x300/?love",
 "https://source.unsplash.com/401x300/?couple",
@@ -241,54 +229,91 @@ const MEMORIES = [
 "https://source.unsplash.com/403x300/?memories"
 ];
 
-let g = document.getElementById("gallery");
+/* GALLERY */
+let g=document.getElementById("gallery");
 
 MEMORIES.forEach(img=>{
-let i = document.createElement("img");
-i.src = img;
+let i=document.createElement("img");
+i.src=img;
 g.appendChild(i);
 });
 
-/* ================= BIRTHDAY COUNTDOWN (30 JUNE) ================= */
-
-function countdown(){
-let now = new Date();
-let year = now.getFullYear();
-
-let bday = new Date(year,5,30);
-
-if(now > bday){
-bday = new Date(year+1,5,30);
+/* MODAL */
+function showMessage(text){
+document.getElementById("msg").innerText=text;
+document.getElementById("modal").style.display="flex";
 }
 
-let diff = bday - now;
+function closeM(){
+document.getElementById("modal").style.display="none";
+}
 
-let d = Math.floor(diff/86400000);
-let h = Math.floor(diff/3600000)%24;
-let m = Math.floor(diff/60000)%60;
-let s = Math.floor(diff/1000)%60;
+/* SONG */
+let audio=document.getElementById("song");
+let playing=false;
 
-let el = document.getElementById("countdown");
+function toggleSong(){
+if(!audio.src){
+audio.src=SONG_URL;
+}
+
+if(!playing){
+audio.play();
+playing=true;
+}else{
+audio.pause();
+playing=false;
+}
+}
+
+/* PASSWORD */
+function check(){
+let p=document.getElementById("pass").value;
+if(p==="love"){
+showMessage("❤️ Secret Unlocked");
+}else{
+showMessage("Wrong Password 😢");
+}
+}
+
+/* COUNTDOWN */
+function countdown(){
+let now=new Date();
+let year=now.getFullYear();
+
+let bday=new Date(year,5,30);
+
+if(now>bday){
+bday=new Date(year+1,5,30);
+}
+
+let diff=bday-now;
+
+let d=Math.floor(diff/86400000);
+let h=Math.floor(diff/3600000)%24;
+let m=Math.floor(diff/60000)%60;
+let s=Math.floor(diff/1000)%60;
+
+let el=document.getElementById("countdown");
 if(el){
-el.innerText = d+"d "+h+"h "+m+"m "+s+"s ❤️";
+el.innerText=d+"d "+h+"h "+m+"m "+s+"s ❤️";
 }
 }
 
 setInterval(countdown,1000);
 countdown();
 
-/* ================= PASSWORD ================= */
+/* HEARTS */
+setInterval(()=>{
+let h=document.createElement("div");
+h.className="heart";
+h.innerHTML="❤️";
+h.style.left=Math.random()*100+"vw";
+document.body.appendChild(h);
+setTimeout(()=>h.remove(),6000);
+},250);
 
-function check(){
-let p = document.getElementById("pass").value;
-if(p === "love"){
-showMessage(`❤️ Secret unlocked`);
-}else{
-showMessage(`Wrong password 😢`);
-}
-}
-
-/* ================= OPEN WHEN MESSAGES (EXACT TEXTS) ================= */
+/* ================= ALL YOUR EXACT MESSAGES ================= */
 
 function showSad(){
 showMessage(`If you're reading this, I'm guessing today hasn't been easy. I just want you to remember that you don't have to carry everything alone. I'm always on your side, even on the days when nothing feels right. Better days are coming, and until then, I'm here for you. ❤️`);
@@ -313,38 +338,21 @@ showMessage(`Hey love,
 If you're missing me right now, just remember this—distance can never change what you mean to me. Every day apart is simply one day closer to seeing you again. Until then, carry a little piece of my love with you. ❤️`);
 }
 
-/* ================= EMERGENCY ================= */
-
 function showEmergency(){
 showMessage(`If you're reading this because you're ready to give up... don't make that decision on a bad day. Rest if you need to, but come back tomorrow. I know you can do this, and I'll always be in your corner. ❤️`);
 }
 
-/* ================= PROUD ================= */
-
 function showProud(){
-showMessage(`I’m really proud of you. You handle life with strength, responsibility, and patience. Even when things are hard, you never give up. ❤️`);
+showMessage(`I’m really proud of you. You handle life with strength, responsibility, and patience. ❤️`);
 }
-
-/* ================= LOVE LETTER ================= */
 
 function showLove(){
 showMessage(`To My Favorite Person, ❤️
-I don't think I tell you this enough, but I truly admire the kind of person you are. You're someone who shows up—for your work, for the people you care about, and for us. No matter how busy life gets, you always try to make time for me, and that means more than you probably realize.
-I love how responsible you are, how seriously you take your work, and how you quietly handle everything on your own. You care for people without expecting anything in return, you respect everyone, and your loyalty gives me a sense of peace that's hard to put into words.
-You don't have to be perfect for me to love you. I love your dedication, your strength, your kindness, and the way you never stop trying. And yes... I also think you're incredibly handsome. 🤍
-Thank you for choosing us every single day, even on the busiest ones. Thank you for making me feel loved, safe, and important. Having you in my life is one of the best things that has ever happened to me.
-No matter where life takes us, I hope you never forget how deeply you're loved, appreciated, and admired.
+I don't think I tell you this enough, but I truly admire the kind of person you are. You show up for everything and everyone. You are strong, kind, and amazing.
 Forever yours. ❤️`);
 }
 
-/* ================= HEARTS ANIMATION ================= */
+</script>
 
-setInterval(()=>{
-let h = document.createElement("div");
-h.className = "heart";
-h.innerHTML = "❤️";
-h.style.left = Math.random()*100 + "vw";
-document.body.appendChild(h);
-
-setTimeout(()=>h.remove(),6000);
-},250);
+</body>
+</html>
